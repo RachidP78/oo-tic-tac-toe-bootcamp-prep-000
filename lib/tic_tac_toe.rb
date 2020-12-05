@@ -38,9 +38,12 @@ WIN_COMBINATIONS = [
         puts " #{@board[6]} " + "| #{@board[7]} |" + " #{@board[8]} "
   end
 
-  def move(input, character = "X")
-    input = input.to_i
-    @board[(input - 1)] = character
+  def input_to_index(input)
+    input.to_i - 1
+  end
+
+  def move(character = "X")
+    @board[input_to_index(input)] = character
     return @board
   end
 
