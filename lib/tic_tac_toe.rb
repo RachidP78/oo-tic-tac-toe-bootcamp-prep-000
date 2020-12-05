@@ -72,8 +72,8 @@ WIN_COMBINATIONS = [
       puts "Please go again"
       position = gets.chomp
     else
-      position = position.to_i
-      position = position - 1
+      position = input_to_index
+      
       @board[position] = current_player
       puts display_board
     end
