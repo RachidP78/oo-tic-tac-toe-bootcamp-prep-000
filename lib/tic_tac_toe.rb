@@ -43,7 +43,7 @@ WIN_COMBINATIONS = [
   end
 
   def move(character = "X")
-    @board[input_to_index(input)] = character
+    @board[input_to_index()] = character
     return @board
   end
 
