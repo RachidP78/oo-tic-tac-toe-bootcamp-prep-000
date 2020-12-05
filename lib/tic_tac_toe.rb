@@ -91,38 +91,38 @@ class TicTacToe
       position_2 = @board[win_index_2]
       position_3 = @board[win_index_3]
 
-      if position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1)
+      if position_1 == position_2 && position_2 == position_3 && position_taken?(@board, win_index_1)
         return win_combination
       end
     end
     return false
   end
 
-  def full?(board)
-    !board.any?{|i| i == " " || i == "" || i == nil}
+  def full?
+    !@board.any?{|i| i == " " || i == "" || i == nil}
   end
 
-  def draw?(board)
-     if !won?(board) && full?(board)
+  def draw?
+     if !won?(@board) && full?(@board)
        return true
-     elsif! full?(board) && !won?(board)
+     elsif! full?(@board) && !won?(@board)
        return false
-     else won?(board)
+     else won?(@board)
        return false
      end
   end
 
-  def over?(board)
-    if draw?(board) || won?(board) || full?(board)
+  def over?
+    if draw?(@board) || won?(@board) || full?(@board)
       return true
     else
       return false
     end
   end
 
-  def winner(board)
-    if won?(board)
-      return board[won?(board)[0]]
+  def winner
+    if won?(@board)
+      return board[won?(@board)[0]]
     end
   end
 end
