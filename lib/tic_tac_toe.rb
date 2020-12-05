@@ -64,9 +64,9 @@ class TicTacToe
     end
   end
 
-  def turn_count(board)
+  def turn_count
     turns = 0
-    board.each do |space|
+    @board.each do |space|
       if space == "X" || space == "O"
         turns += 1
       end
@@ -74,55 +74,55 @@ class TicTacToe
     turns
   end
 
-  def current_player(board)
-    if turn_count(board).even?
+  def current_player
+    if turn_count.even?
       return "X"
     else return "O"
     end
   end
 
-  def won?(board)
+  def won?
     WIN_COMBINATIONS.each do |win_combination|
       win_index_1 = win_combination[0]
       win_index_2 = win_combination[1]
       win_index_3 = win_combination[2]
 
-      position_1 = board[win_index_1]
-      position_2 = board[win_index_2]
-      position_3 = board[win_index_3]
+      position_1 = @board[win_index_1]
+      position_2 = @board[win_index_2]
+      position_3 = @board[win_index_3]
 
-      if position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1)
+      if position_1 == position_2 && position_2 == position_3 && position_taken?(win_index_1)
         return win_combination
       end
     end
     return false
   end
 
-  def full?(board)
-    !board.any?{|i| i == " " || i == "" || i == nil}
+  def full?
+    !@board.any?{|i| i == " " || i == "" || i == nil}
   end
 
-  def draw?(board)
-     if !won?(board) && full?(board)
+  def draw?
+     if !won? && full?
        return true
-     elsif! full?(board) && !won?(board)
+     elsif! full? && !won?
        return false
-     else won?(board)
+     else won?
        return false
      end
   end
 
-  def over?(board)
-    if draw?(board) || won?(board) || full?(board)
+  def over?
+    if draw? || won? || full?
       return true
     else
       return false
     end
   end
 
-  def winner(board)
-    if won?(board)
-      return board[won?(board)[0]]
+  def winner
+    if won?
+      return @board[won?[0]]
     end
   end
 end
