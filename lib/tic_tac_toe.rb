@@ -52,13 +52,13 @@ class TicTacToe
   end
 
   # Define your play method below
-  def play(board)
-    until over?(board)
-      current_player(board)
-      turn(board)
+  def play
+    until over?
+      current_player
+      turn
     end
-    if won?(board)
-      puts "Congratulations #{winner(board)}!"
+    if won?
+      puts "Congratulations #{winner(@board)}!"
     else
       puts "Cat's Game!"
     end
